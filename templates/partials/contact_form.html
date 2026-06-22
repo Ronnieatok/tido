@@ -1,0 +1,45 @@
+{{define "contact-form"}}
+<div class="form-status{{if .GlobalError}} show{{end}}" id="formStatus" role="status">
+  {{if .GlobalError}}<i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.GlobalError}}{{end}}
+</div>
+<form id="contactForm"
+      hx-post="/api/contact"
+      hx-target="#contactFormWrap"
+      hx-swap="innerHTML"
+      hx-indicator="#contactSpinner"
+      novalidate>
+  <div class="form-row">
+    <div class="field{{if .Errors.name}} invalid{{end}}" id="field-name">
+      <label for="cf-name">Full Name</label>
+      <input type="text" id="cf-name" name="name" autocomplete="name" value="{{.Values.name}}" required aria-required="true">
+      {{if .Errors.name}}<span class="err"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.Errors.name}}</span>{{end}}
+    </div>
+    <div class="field{{if .Errors.email}} invalid{{end}}" id="field-email">
+      <label for="cf-email">Email Address</label>
+      <input type="email" id="cf-email" name="email" autocomplete="email" value="{{.Values.email}}" required aria-required="true">
+      {{if .Errors.email}}<span class="err"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.Errors.email}}</span>{{end}}
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="field{{if .Errors.phone}} invalid{{end}}" id="field-phone">
+      <label for="cf-phone">Phone Number</label>
+      <input type="tel" id="cf-phone" name="phone" autocomplete="tel" value="{{.Values.phone}}">
+      {{if .Errors.phone}}<span class="err"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.Errors.phone}}</span>{{end}}
+    </div>
+    <div class="field{{if .Errors.subject}} invalid{{end}}" id="field-subject">
+      <label for="cf-subject">Subject</label>
+      <input type="text" id="cf-subject" name="subject" value="{{.Values.subject}}" required aria-required="true">
+      {{if .Errors.subject}}<span class="err"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.Errors.subject}}</span>{{end}}
+    </div>
+  </div>
+  <div class="field{{if .Errors.message}} invalid{{end}}" id="field-message">
+    <label for="cf-message">Message</label>
+    <textarea id="cf-message" name="message" required aria-required="true">{{.Values.message}}</textarea>
+    {{if .Errors.message}}<span class="err"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> {{.Errors.message}}</span>{{end}}
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">
+    <span class="btn-label">Send Message <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></span>
+    <span class="spinner htmx-indicator" id="contactSpinner" aria-hidden="true"></span>
+  </button>
+</form>
+{{end}}

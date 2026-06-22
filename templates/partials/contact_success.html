@@ -1,0 +1,11 @@
+{{define "contact-success"}}
+<div class="form-status show success" role="status">
+  <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Thank you, {{.FirstName}}! Your message has been received — we'll get back to you soon.
+</div>
+<button type="button" class="btn btn-teal-outline btn-block"
+        hx-get="/api/contact/reset"
+        hx-target="#contactFormWrap"
+        hx-swap="innerHTML">
+  Send Another Message
+</button>
+{{end}}

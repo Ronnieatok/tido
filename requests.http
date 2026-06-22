@@ -1,0 +1,71 @@
+### TIDO — API test requests
+### Requires the "REST Client" VS Code extension (humao.rest-client).
+### Start the server first (F5, or `go run .`), then click "Send Request"
+### above any block below. Each one is independent.
+
+@host = http://localhost:8080
+
+### 1. Home page renders
+GET {{host}}/
+
+### 2. Static assets are served (should be 200, not 404)
+GET {{host}}/static/css/style.css
+
+### 3. Documents are served
+GET {{host}}/documents/TIDO-Constitution.pdf
+
+### 4. Contact form — VALID submission
+# Expect: 200, HTML fragment containing "form-status show success"
+# and "Thank you, Jane!"
+POST {{host}}/api/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=Jane Doe&email=jane@example.com&phone=0712345678&subject=Volunteering&message=I would like to volunteer with TIDO next month.
+
+### 5. Contact form — INVALID: all required fields empty
+# Expect: 200, HTML fragment with 4 field-level errors (name, email,
+# subject, message) and the "Please correct the highlighted fields" banner
+POST {{host}}/api/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=&email=&phone=&subject=&message=
+
+### 6. Contact form — INVALID: bad email format
+# Expect: error on the email field only (others valid)
+POST {{host}}/api/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=Jane Doe&email=not-an-email&phone=&subject=Hello&message=This message is long enough.
+
+### 7. Contact form — INVALID: message too short (<10 chars)
+# Expect: error on the message field only
+POST {{host}}/api/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=Jane Doe&email=jane@example.com&phone=&subject=Hello&message=short
+
+### 8. Contact form — INVALID: malformed phone (when provided)
+# Expect: error on the phone field only — phone is optional, but if
+# present must look like a phone number
+POST {{host}}/api/contact
+Content-Type: application/x-www-form-urlencoded
+
+name=Jane Doe&email=jane@example.com&phone=abc&subject=Hello&message=This message is long enough.
+
+### 9. Reset the contact form (used by the "Send Another Message" button)
+# Expect: a blank form partial, no values, no errors
+GET {{host}}/api/contact/reset
+
+### 10. Newsletter — VALID email
+# Expect: "Subscribed! Thank you for staying connected with TIDO."
+POST {{host}}/api/newsletter
+Content-Type: application/x-www-form-urlencoded
+
+email=fan@example.com
+
+### 11. Newsletter — INVALID email
+# Expect: re-rendered form + "Please enter a valid email address."
+POST {{host}}/api/newsletter
+Content-Type: application/x-www-form-urlencoded
+
+email=not-an-email
