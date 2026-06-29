@@ -106,7 +106,7 @@ func objectives() []Objective {
 
 func leaders() []Leader {
 	return []Leader{
-		{"CN", "bg-navy", "Chairperson Name", "Chairperson", "Provides overall leadership and direction, chairs meetings, and represents TIDO externally."},
+		{"CN", "bg-navy", "Kelvin Loibach", "Chairperson", "Provides overall leadership and direction, chairs meetings, and represents TIDO externally."},
 		{"VN", "bg-teal", "Vice-Chair Name", "Vice Chairperson", "Supports the Chairperson and steps in to lead in their absence."},
 		{"SN", "bg-orange", "Secretary Name", "Secretary", "Keeps official records and minutes, and handles organizational communication."},
 		{"AN", "bg-ochre", "Asst. Secretary Name", "Assistant Secretary", "Supports the Secretary in maintaining records and membership documentation."},
