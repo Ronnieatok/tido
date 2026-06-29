@@ -106,15 +106,15 @@ func objectives() []Objective {
 
 func leaders() []Leader {
 	return []Leader{
-		{"KN", "bg-navy", "Kelvin Loibach", "Chairperson", "Provides overall leadership and direction, chairs meetings, and represents TIDO externally."},
-		{"VN", "bg-teal", "Vice-Chair Name", "Vice Chairperson", "Supports the Chairperson and steps in to lead in their absence."},
-		{"SN", "bg-orange", "Secretary Name", "Secretary", "Keeps official records and minutes, and handles organizational communication."},
-		{"AN", "bg-ochre", "Asst. Secretary Name", "Assistant Secretary", "Supports the Secretary in maintaining records and membership documentation."},
-		{"TN", "bg-navy", "Treasurer Name", "Treasurer", "Manages organizational finances and prepares financial reports for members."},
-		{"ON", "bg-teal", "Organizing Sec. Name", "Organizing Secretary", "Coordinates events, meetings, and on-the-ground community mobilization."},
-		{"PN", "bg-orange", "PWD Coordinator Name", "Coordinator, Persons with Disabilities", "Champions disability inclusion and advocacy within all TIDO programs."},
-		{"YN", "bg-ochre", "Youth Rep. Name", "Youth Representative", "Represents the voice and interests of young people across the organization."},
-		{"WN", "bg-navy", "Women Rep. Name", "Women Representative", "Champions women's empowerment and representation in decision-making."},
+		{"KL", "bg-navy", "Kelvin Loibach", "Chairperson", "Provides overall leadership and direction, chairs meetings, and represents TIDO externally."},
+		{"AM", "bg-teal", "Akai Mary", "Vice Chairperson", "Supports the Chairperson and steps in to lead in their absence."},
+		{"EJ", "bg-orange", "Edapal James", "Secretary", "Keeps official records and minutes, and handles organizational communication."},
+		{"MA", "bg-ochre", "Mariah Akiru", "Assistant Secretary", "Supports the Secretary in maintaining records and membership documentation."},
+		{"RA", "bg-navy", "Ronnie Atok", "Treasurer", "Manages organizational finances and prepares financial reports for members."},
+		{"NE", "bg-teal", "Nanok Edapal", "Organizing Secretary", "Coordinates events, meetings, and on-the-ground community mobilization."},
+		{"CE", "bg-orange", "Chris Ekiru", "Coordinator, Persons with Disabilities", "Champions disability inclusion and advocacy within all TIDO programs."},
+		{"MI", "bg-ochre", "Mercy Idome", "Youth Representative", "Represents the voice and interests of young people across the organization."},
+		{"AA", "bg-navy", "Avrila Adome", "Women Representative", "Champions women's empowerment and representation in decision-making."},
 	}
 }
 
